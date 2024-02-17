@@ -7,6 +7,11 @@ This repository contains the source code. Main pages of the website:
 - `services.html`: Services page (Elias)
 - `contact.html`: Contact page (Jonathan)
 
+Ausfuehren in VS-Code einfach via F5 -> local Browser, macht er dann lokal auf. 
+Reicht absolut aus, dediziertes hosting sparen wir uns an der Stelle.
+
+## DESCRIPTION
+
 Branches und Issues sind fuer alle Subpages vorhanden, bitte erst rein navigieren, dann Änderungen vornehmen, committen und pushen innerhalb der branch.
 
 Das Framework hat genug Platz reserviert, sodass alles in die jeweilige subpage HTML rein kann, falls doch noch andere Binaries dazu muessen,
