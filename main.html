@@ -1,53 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Webpage</title>
+    <title>Interactive Credit Card Experience</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; background-color: #0A0A0A; color: #FFFFFF; }
-        .navbar { background-color: #202020; }
-        .nav-link { color: #FFFFFF !important; }
-        .nav-link:hover { color: #4A90E2 !important; }
-        .content { margin-top: 20px; }
-        /* Add additional styling here */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: #FFF;
+        }
+
+        .navbar {
+            width: 100%;
+            z-index: 10;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .promo-content {
+            text-align: center;
+            margin: 20px 50px;
+            padding: 0 20px;
+        }
+
+        .floating-card {
+            width: 450px;
+            height: 285px;
+            perspective: 1000px;
+            z-index: 2;
+            margin-top: 20px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(145deg, #000, #434343);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: #ccc;
+            /* Simulate the typical color of a card's back */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .magnetic-strip {
+            width: 90%;
+            height: 40px;
+            background: #000;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        .signature-space {
+            margin-top: 15px;
+            width: 90%;
+            height: 40px;
+            border-top: 2px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .cvv {
+            width: 45px;
+            height: 25px;
+            background: white;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+
+
+        .floating-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(2, 0, 36, 0.8) 0%, rgba(9, 9, 121, 0.8) 35%, rgba(0, 212, 255, 0.8) 100%);
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .promo-content {
+            text-align: center;
+            margin: 20px 50px;
+            padding: 0 20px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Futuristic Site</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Credit Card Focus</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="main.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="main.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="services.html">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-        </ul>
+    <div class="content-area">
+        <div class="promo-content">
+            <h2>Welcome to the Future of Financial Management</h2>
+            <p>Discover unparalleled security, flexibility, and convenience with our cutting-edge Visa card. Tailored
+                for those who demand the best in life.</p>
+            <p>Explore features that redefine banking, from virtual payments to comprehensive fraud protection. Your
+                gateway to a smarter financial future starts here.</p>
+        </div>
+
+        <div class="floating-card">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <p>•••• •••• •••• 1234</p>
+                    <p>John Doe</p>
+                </div>
+                <div class="card-face card-back">
+                    <div class="magnetic-strip"></div>
+                    <div class="signature-space">
+                        <span>John Doe</span>
+                        <div class="cvv">123</div>
+                    </div>
+                    <p>Visa</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-content">
+            <h3>Exclusive Benefits</h3>
+            <p>Enjoy a wide range of exclusive benefits including access to premium airport lounges, cashback on every
+                purchase, and personalized customer service available 24/7.</p>
+            <p>Join us today and experience the difference. It's not just a card; it's your key to a new lifestyle.</p>
+        </div>
     </div>
-</nav>
 
-<div class="container content">
-    <h1>Welcome to Our Futuristic Site</h1>
-    <p>Pascal - Raname. change. Fill with life.</p>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="floating-background">
+        <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 7s;"></div>
+        <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-duration: 6s;"></div>
+        <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 40%; animation-duration: 8s;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const cardInner = document.querySelector('.card-inner');
+        let isFlipped = false;
+        let allowFlip = true;
+    
+        function flipCard() {
+            if (!allowFlip) return;
+            isFlipped = !isFlipped;
+            cardInner.classList.toggle('flipped');
+            if (isFlipped) {
+                // Stop the card from following the mouse when it's flipped
+                cardInner.style.transform = 'rotateY(180deg)';
+                // Disable flipping during the timeout
+                allowFlip = false;
+                setTimeout(() => {
+                    if (isFlipped) { // Auto-flip back only if still flipped
+                        flipCard(); // Auto flip back after 5 seconds
+                    }
+                }, 5000);
+            } else {
+                // Allow the card to follow the mouse again
+                cardInner.style.transform = '';
+                allowFlip = true;
+            }
+        }
+    
+        cardInner.addEventListener('click', flipCard);
+        document.addEventListener('mousemove', (e) => {
+            if (!isFlipped) {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+                const rotateX = mouseY * -0.05; // Invert Y for X rotation to simulate perspective
+                const rotateY = mouseX * 0.05;
+                cardInner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+            }
+        });
+    </script>
 </body>
 </html>

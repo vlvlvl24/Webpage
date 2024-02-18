@@ -12,6 +12,9 @@
         .nav-link:hover { color: #4A90E2 !important; }
         .content { margin-top: 20px; }
         /* Add additional styling here */
+        .service-item { margin-bottom: 20px; }
+        .service-title { color: #4A90E2; cursor: pointer; } /* Add cursor pointer */
+        .service-description { display: none; } /* Initially hide description */
     </style>
 </head>
 <body>
@@ -43,8 +46,57 @@
 
 <div class="container content">
     <h1>Services</h1>
-    <p>Elias - Raname. change. Fill with life.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Kontoanmeldung und -verwaltung</h2>
+                <p class="service-description">Hier können Sie sich in Ihre Konten einloggen, um Ihren Kontostand, Ihre Transaktionshistorie und andere Kontoinformationen einzusehen und zu verwalten. Sie können auch neue Konten eröffnen und verschiedene Finanzierungsoptionen erkunden.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Transaktionsüberwachung</h2>
+                <p class="service-description">Sie können Ihre aktuellen und vergangenen Kreditkartentransaktionen überprüfen und verfolgen, einschließlich Einkäufen, Zahlungen und Gebühren. Eine detaillierte Transaktionshistorie ermöglicht es Ihnen, Ihre Ausgaben zu verfolgen und Budgets zu planen.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Kreditkartenanträge</h2>
+                <p class="service-description">Beantragen Sie eine neue Kreditkarte oder aktualisieren Sie Ihre bestehenden Karten online. Erfahren Sie mehr über die verschiedenen Kartenoptionen, Belohnungsprogramme und Sonderangebote.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Kreditkartensicherheit</h2>
+                <p class="service-description">Informationen und Ressourcen zur Kreditkartensicherheit und Schutz vor Betrug. Erfahren Sie, wie Sie verdächtige Aktivitäten erkennen und Ihre persönlichen Daten schützen können.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Belohnungsprogramm und Sonderangebote</h2>
+                <p class="service-description">Informationen über Belohnungsprogramme für Kreditkarteninhaber, einschließlich Bonuspunkten, Cashback-Angeboten und Sonderaktionen. Entdecken Sie exklusive Angebote und Rabatte für Karteninhaber.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Zahlungsmöglichkeiten und -funktionen</h2>
+                <p class="service-description">Optionen zum Bezahlen von Kreditkartenrechnungen, automatische Rechnungszahlung und Überweisung von Geldern von anderen Konten. Erfahren Sie mehr über Zahlungsmethoden und -funktionen für eine bequeme Abwicklung Ihrer Finanzen.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Finanztools und Ressourcen</h2>
+                <p class="service-description">Budgetplaner, Ausgabenanalysen und Kredit-Score-Überwachungsdienste, um Ihnen bei der Verwaltung Ihres Geldes zu helfen. Nutzen Sie unsere Finanztools und Ressourcen, um Ihre finanziellen Ziele zu erreichen.</p>
+            </div>
+            <div class="service-item" onclick="toggleDescription(this)">
+                <h2 class="service-title">Reisevorteile und Versicherungen</h2>
+                <p class="service-description">Informationen über Reisevorteile wie Versicherungen, Zugang zu Flughafenlounges und Mietwagenversicherungen für Kreditkarteninhaber. Entdecken Sie die vielfältigen Reisevorteile und Versicherungsoptionen, die Ihre Reisen sicherer und angenehmer machen.</p>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function toggleDescription(element) {
+        var description = element.querySelector('.service-description');
+        // Toggle the display property of description element
+        if (description.style.display === 'none' || description.style.display === '') {
+            description.style.display = 'block';
+        } else {
+            description.style.display = 'none';
+        }
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
