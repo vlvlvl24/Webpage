@@ -8,13 +8,23 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #0A0A0A; color: #FFFFFF; }
         .navbar { background-color: #202020; }
-        .nav-link { color: #FFFFFF !important; }
-        .nav-link:hover { color: #4A90E2 !important; }
         .content { margin-top: 20px; }
         /* Add additional styling here */
         .service-item { margin-bottom: 20px; }
         .service-title { color: #4A90E2; cursor: pointer; } /* Add cursor pointer */
         .service-description { display: none; } /* Initially hide description */
+        .navbar { background-color: #202020; }
+        
+        /* Updated nav-link colors */
+        .nav-link {
+            color: #A9A9A9 !important; /* Light gray for non-active links */
+        }
+        .nav-item.active .nav-link {
+            color: #FFFFFF !important; /* White for the active link */
+        }
+
+        .nav-link:hover { color: #4A90E2 !important; }
+        .content { margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -31,7 +41,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="main.html">Home</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item">
