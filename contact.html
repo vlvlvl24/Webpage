@@ -9,13 +9,14 @@
         body, html {
             height: 100%;
             margin: 0;
-            background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(2, 19, 40) 100%);
             font-family: Arial, sans-serif;
             color: #FFFFFF;
             padding-top: 56px; /* Adjust for navbar overlap */
         }
         .navbar { background-color: #202020; }
-        .nav-link { color: #FFFFFF !important; }
+        .nav-link { color: #A9A9A9 !important; } /* Non-active links */
+        .nav-item.active .nav-link { color: #FFFFFF !important; } /* Active link color */
         .nav-link:hover { color: #4A90E2 !important; }
         .content { margin-top: 20px; }
         .contact-form {
@@ -47,7 +48,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="main.html">Credit Card Focus</a>
+    <a class="navbar-brand" href="main.html">Alpha Credit Card</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -63,7 +64,7 @@
                 <a class="nav-link" href="services.html">Services</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="contact.html">Contact</a> <!-- Correctly highlighted as active -->
             </li>
         </ul>
     </div>
@@ -74,7 +75,7 @@
     <div class="contact-form">
         <h2>Kontaktiere uns</h2>
         <p>Hast du Fragen zu unseren Kreditkartenangeboten oder benötigst du Unterstützung? Fülle das untenstehende Formular aus, und unser Team wird sich so schnell wie möglich bei dir melden.</p>
-        <form action="submit_form.php" method="post">
+        <form>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -108,8 +109,7 @@
             form.reset();
         });
     });
-    </script>
-    
+</script>
 
 </body>
 </html>
