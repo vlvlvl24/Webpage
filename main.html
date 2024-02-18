@@ -54,8 +54,8 @@
         }
 
         .flipped {
-    transform: rotateY(180deg);
-}
+            transform: rotateY(180deg);
+        }
 
         .card-face {
             position: absolute;
@@ -64,7 +64,7 @@
             backface-visibility: hidden;
             border-radius: 8px;
             font-size: 20px;
-            color: #FFF;
+            color: #b29146;
             background: linear-gradient(145deg, #000, #434343);
             display: flex;
             justify-content: space-between;
@@ -75,12 +75,51 @@
         .card-back {
             transform: rotateY(180deg);
             background: linear-gradient(145deg, #434343, #000);
+            /* Simulate the typical color of a card's back */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .magnetic-strip {
+            width: 100%;
+            height: 50px;
+            background: #000;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        .signature-space {
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 75%;
+            height: 100px;
+            border-top: 30px solid #6b6b6b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 5px;
+            box-sizing: border-box;
+        }
+
+        .cvv {
+            position: absolute;
+            top: 175px;
+            /* Center vertically */
+            right: 20px;
+            /* Place 20px from the right edge */
+            width: 45px;
+            height: 25px;
+            background: rgb(78, 26, 26);
+            text-align: center;
+            line-height: 25px;
+            border-radius: 4px;
         }
 
         .data-chip {
             width: 50px;
             height: 40px;
-            background-color: yellow;
+            background-color: rgb(185, 136, 0);
             border-radius: 5px;
             position: absolute;
             top: 50px;
@@ -100,11 +139,12 @@
         .card-number,
         .card-name {
             position: absolute;
-            left: 20px;
+            left: 30px;
         }
 
         .card-number {
             bottom: 80px;
+            left: 30px;
         }
 
         .card-name {
@@ -175,7 +215,7 @@
                             <span class="card-name-back">John Doe</span>
                             <div class="cvv">123</div>
                         </div>
-                        <p>Visa</p>
+                        <p> </p>
                     </div>
                 </div>
             </div>
@@ -190,92 +230,107 @@
                 <input type="text" id="nameInput" placeholder="Cardholder Name" oninput="updateName(this.value)">
                 <input type="text" id="numberInput" placeholder="Card Number" oninput="updateNumber(this.value)">
             </div>
-        </div>
 
 
-        <div class="floating-background">
-            <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 7s;"></div>
-            <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-duration: 6s;"></div>
-            <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 40%; animation-duration: 8s;"></div>
-        </div>
+            <div class="floating-background">
+                <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 7s;">
+                </div>
+                <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-duration: 6s;">
+                </div>
+                <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 40%; animation-duration: 8s;">
+                </div>
+            </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const card = document.querySelector('.card-inner');
-                const cardName = card.querySelector('.card-name');
-                const cardNumber = card.querySelector('.card-number');
-                const nameInput = document.getElementById('nameInput');
-                const numberInput = document.getElementById('numberInput');
-                
-                
-                // Corrected flipCard function to ensure it toggles the 'flipped' class properly
-                function flipCard(event) {
-                    // Check if the click is directly on the card and not on input fields
-                    if (event.target !== nameInput && event.target !== numberInput) {
-                        console.log("Card clicked"); // Diagnostic log
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const card = document.querySelector('.card-inner');
+                    const cardNameFront = card.querySelector('.card-name');
+                    const cardNumberFront = card.querySelector('.card-number');
+                    const cardNameBack = card.querySelector('.card-name-back');
+                    const nameInput = document.getElementById('nameInput');
+                    const numberInput = document.getElementById('numberInput');
+
+                    let activeSide = 'front';
+
+                    function flipCard() {
                         card.classList.toggle('flipped');
+                        activeSide = activeSide === 'front' ? 'back' : 'front';
                     }
-                }
-            
-                // Bind the corrected flip function to the card's click event
-                document.addEventListener('keydown', (event) => {
-        // Check if 'E' or 'e' is pressed
-        if (event.key === 'E' || event.key === 'e') {
-            card.classList.toggle('flipped');
-        }
-    });
-            
-                // Live update for cardholder's name with validation
-                nameInput.addEventListener('input', (e) => {
-                    if (/^[a-zA-Z ]*$/.test(e.target.value)) {
-                        cardName.textContent = e.target.value;
-                    } else {
-                        alert("Name can only contain letters and spaces.");
-                        nameInput.value = nameInput.value.replace(/[^a-zA-Z ]/g, '');
-                    }
-                });
-            
-                // Live update for card number with validation
-                numberInput.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
-                    if (value.length <= 16) {
-                        cardNumber.textContent = value.replace(/(\d{4})/g, '$1 ').trim();
-                    } else {
-                        alert("Number can only contain up to 16 digits.");
-                        numberInput.value = numberInput.value.slice(0, 16);
-                    }
-                });
-                
-                // Focus event listeners for inputs to reset tilt effect
-                [nameInput, numberInput].forEach(input => {
-                    input.addEventListener('focus', () => {
-                        // Ensures the card is not tilted when inputs are focused
-                        if (!card.classList.contains('flipped')) {
-                            card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+
+                    card.addEventListener('click', function () {
+                        flipCard();
+                    });
+
+                    nameInput.addEventListener('input', function (e) {
+                        const validName = e.target.value.replace(/[^a-zA-Z\s]/g, '').slice(0, 50);
+                        if (/[\d]/.test(e.target.value)) {
+                            alert("Name cannot contain numbers.");
+                            e.target.value = validName;
+                            return;
+                        }
+                        cardNameFront.textContent = validName;
+                        cardNameBack.textContent = validName;
+                        if (validName.length > 25) {
+                            alert("Name can only contain up to 25 characters.");
                         }
                     });
-                });
-            
-                // Apply tilt effect based on mouse movement
-                document.addEventListener('mousemove', (e) => {
-                    if (!card.classList.contains('flipped') && document.activeElement !== nameInput && document.activeElement !== numberInput) {
-                        const cardRect = card.getBoundingClientRect();
-                        const centerX = cardRect.left + cardRect.width / 2;
-                        const centerY = cardRect.top + cardRect.height / 2;
+
+                    numberInput.addEventListener('input', function (e) {
+                        let validNumber = e.target.value.replace(/\D/g, '').slice(0, 16);
+                        if (validNumber.length !== e.target.value.length) {
+                            alert("Please enter only digits.");
+                            e.target.value = validNumber; // Remove any non-digit characters
+                        }
+                        cardNumberFront.textContent = validNumber.replace(/(.{4})/g, '$1 ').trim();
+                    });
+
+
+                    let isMouseOverCard = false;
+
+                    document.addEventListener('mousemove', (e) => {
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
                         const mouseX = e.clientX - centerX;
                         const mouseY = e.clientY - centerY;
-                        const rotateY = mouseX / 20;
-                        const rotateX = -(mouseY / 20);
-                        card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-                    }
-                });
-            });
-            </script>
-            
 
+                        const rotateY = mouseX * 0.05;
+                        const rotateX = mouseY * -0.05;
+
+                        if (!isMouseOverCard) {
+                            if (activeSide === 'front') {
+                                card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+                            } else {
+                                card.style.transform = `rotateY(${180 + rotateY}deg) rotateX(${rotateX}deg)`;
+                            }
+                        }
+                    });
+
+                    card.addEventListener('mouseenter', () => {
+                        isMouseOverCard = true;
+                        card.style.transform = ''; // Reset card position on mouse enter
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        isMouseOverCard = false;
+                    });
+
+                    [nameInput, numberInput].forEach(input => {
+                        input.addEventListener('focus', () => {
+                            if (!card.classList.contains('flipped')) {
+                                card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                            }
+                        });
+                        input.addEventListener('blur', () => {
+                            card.style.transform = '';
+                        });
+                    });
+                });
+
+            </script>
     </body>
+
 </html>
