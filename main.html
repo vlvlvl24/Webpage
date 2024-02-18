@@ -1,3 +1,4 @@
+<!-- Pascals Code -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
         html {
             height: 100%;
             margin: 0;
-            background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(2, 19, 40) 100%);
+            background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgb(2, 19, 40) 100%);
             overflow: hidden;
             font-family: Arial, sans-serif;
             color: #FFF;
@@ -29,29 +30,32 @@
             margin-top: 60px;
         }
 
-        .promo-content {
-            text-align: center;
-            margin: 20px 50px;
-            padding: 0 20px;
-        }
-
         .floating-card {
             width: 450px;
             height: 285px;
             perspective: 1000px;
             z-index: 2;
             margin-top: 20px;
+            margin-bottom: 100px;
         }
 
         .card-inner {
             width: 100%;
             height: 100%;
-            transition: transform 0.6s;
+            transition: transform 0.6s ease;
             transform-style: preserve-3d;
             position: relative;
             border-radius: 8px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
         }
+
+        .flipped {
+    transform: rotateY(180deg);
+}
 
         .card-face {
             position: absolute;
@@ -59,200 +63,219 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             font-size: 20px;
+            color: #FFF;
+            background: linear-gradient(145deg, #000, #434343);
+            display: flex;
+            justify-content: space-between;
             padding: 20px;
             box-sizing: border-box;
-            background: linear-gradient(145deg, #000, #434343);
         }
 
         .card-back {
             transform: rotateY(180deg);
             background: linear-gradient(145deg, #434343, #000);
-            /* Simulate the typical color of a card's back */
+        }
+
+        .data-chip {
+            width: 50px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 5px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        .visa-logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #1a1f71;
+            text-shadow: 0px 0px 5px rgba(0, 0, 25, 500);
+        }
+
+        .card-number,
+        .card-name {
+            position: absolute;
+            left: 20px;
+        }
+
+        .card-number {
+            bottom: 80px;
+        }
+
+        .card-name {
+            bottom: 40px;
+        }
+
+        .input-group {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .magnetic-strip {
-            width: 90%;
-            height: 40px;
-            background: #000;
-            margin-top: 15px;
-            border-radius: 4px;
-        }
-
-        .signature-space {
-            margin-top: 15px;
-            width: 75%;
-            height: 100px;
-            border-top: 30px solid #8e8e8e;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 25px;
-            box-sizing: border-box;
+            width: 100%;
+            margin-top: 20px;
         }
 
-        .cvv {
-            width: 45px;
-            height: 25px;
-            background: rgb(78, 26, 26);
-            text-align: center;
-            line-height: 25px;
-            border-radius: 4px;
-        }
-
-        .floating-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background: radial-gradient(circle, rgba(2, 0, 36, 0.8) 0%, rgba(9, 9, 121, 0.8) 35%, rgba(0, 212, 255, 0.8) 100%);
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .promo-content {
-            text-align: center;
-            margin: 20px 50px;
-            padding: 0 20px;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+        .input-group input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 300px;
         }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="main.html">Alpha Credit Card</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="main.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <body>
 
-    <div class="content-area">
-        <div class="promo-content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="main.html">Alpha Credit Card</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="main.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content-area">
             <h2>Welcome to the Future of Financial Management</h2>
-            <p>Discover unparalleled security, flexibility, and convenience with our cutting-edge Visa card. Tailored
-                for those who demand the best in life.</p>
-            <p>Explore features that redefine banking, from virtual payments to comprehensive fraud protection. Your
-                gateway to a smarter financial future starts here.</p>
-        </div>
 
-        <div class="floating-card">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <p>•••• •••• •••• 1234</p>
-                    <p>John Doe</p>
-                </div>
-                <div class="card-face card-back">
-                    <div class="magnetic-strip"></div>
-                    <div class="signature-space">
-                        <span>John Doe</span>
-                        <div class="cvv">123</div>
+            <div class="floating-card">
+                <div class="card-inner">
+                    <div class="card-face card-front">
+                        <div class="data-chip"></div>
+                        <div class="visa-logo">VISA</div>
+                        <p class="card-number">•••• •••• •••• 1234</p>
+                        <p class="card-name">John Doe</p>
                     </div>
-                    <p>Visa</p>
+                    <div class="card-face card-back">
+                        <div class="magnetic-strip"></div>
+                        <div class="signature-space">
+                            <span class="card-name-back">John Doe</span>
+                            <div class="cvv">123</div>
+                        </div>
+                        <p>Visa</p>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Instructions for the user -->
+            <div class="promo-content">
+                <p>Use the inputs below to change the name and credit card number on the card.</p>
+            </div>
+
+            <!-- Input fields for name and number -->
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="Cardholder Name" oninput="updateName(this.value)">
+                <input type="text" id="numberInput" placeholder="Card Number" oninput="updateNumber(this.value)">
             </div>
         </div>
 
-        <div class="promo-content">
-            <h3>Exclusive Benefits</h3>
-            <p>Enjoy a wide range of exclusive benefits including access to premium airport lounges, cashback on every
-                purchase, and personalized customer service available 24/7.</p>
-            <p>Join us today and experience the difference. It's not just a card; it's your key to a new lifestyle.</p>
+
+        <div class="floating-background">
+            <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 7s;"></div>
+            <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-duration: 6s;"></div>
+            <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 40%; animation-duration: 8s;"></div>
         </div>
-    </div>
 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <div class="floating-background">
-        <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-duration: 7s;"></div>
-        <div class="particle" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-duration: 6s;"></div>
-        <div class="particle" style="width: 25px; height: 25px; top: 70%; left: 40%; animation-duration: 8s;"></div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        const cardInner = document.querySelector('.card-inner');
-        let isFlipped = false;
-        let allowFlip = true;
-    
-        function flipCard() {
-            if (!allowFlip) return;
-            isFlipped = !isFlipped;
-            cardInner.classList.toggle('flipped');
-            if (isFlipped) {
-                // Stop the card from following the mouse when it's flipped
-                cardInner.style.transform = 'rotateY(180deg)';
-                // Disable flipping during the timeout
-                allowFlip = false;
-                setTimeout(() => {
-                    if (isFlipped) { // Auto-flip back only if still flipped
-                        flipCard(); // Auto flip back after 5 seconds
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const card = document.querySelector('.card-inner');
+                const cardName = card.querySelector('.card-name');
+                const cardNumber = card.querySelector('.card-number');
+                const nameInput = document.getElementById('nameInput');
+                const numberInput = document.getElementById('numberInput');
+                
+                
+                // Corrected flipCard function to ensure it toggles the 'flipped' class properly
+                function flipCard(event) {
+                    // Check if the click is directly on the card and not on input fields
+                    if (event.target !== nameInput && event.target !== numberInput) {
+                        console.log("Card clicked"); // Diagnostic log
+                        card.classList.toggle('flipped');
                     }
-                }, 5000);
-            } else {
-                // Allow the card to follow the mouse again
-                cardInner.style.transform = '';
-                allowFlip = true;
-            }
+                }
+            
+                // Bind the corrected flip function to the card's click event
+                document.addEventListener('keydown', (event) => {
+        // Check if 'E' or 'e' is pressed
+        if (event.key === 'E' || event.key === 'e') {
+            card.classList.toggle('flipped');
         }
-    
-        cardInner.addEventListener('click', flipCard);
-        document.addEventListener('mousemove', (e) => {
-            if (!isFlipped) {
-                const centerX = window.innerWidth / 2;
-                const centerY = window.innerHeight / 2;
-                const mouseX = e.clientX - centerX;
-                const mouseY = e.clientY - centerY;
-                const rotateX = mouseY * -0.05; // Invert Y for X rotation to simulate perspective
-                const rotateY = mouseX * 0.05;
-                cardInner.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-            }
-        });
-    </script>
-</body>
+    });
+            
+                // Live update for cardholder's name with validation
+                nameInput.addEventListener('input', (e) => {
+                    if (/^[a-zA-Z ]*$/.test(e.target.value)) {
+                        cardName.textContent = e.target.value;
+                    } else {
+                        alert("Name can only contain letters and spaces.");
+                        nameInput.value = nameInput.value.replace(/[^a-zA-Z ]/g, '');
+                    }
+                });
+            
+                // Live update for card number with validation
+                numberInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+                    if (value.length <= 16) {
+                        cardNumber.textContent = value.replace(/(\d{4})/g, '$1 ').trim();
+                    } else {
+                        alert("Number can only contain up to 16 digits.");
+                        numberInput.value = numberInput.value.slice(0, 16);
+                    }
+                });
+                
+                // Focus event listeners for inputs to reset tilt effect
+                [nameInput, numberInput].forEach(input => {
+                    input.addEventListener('focus', () => {
+                        // Ensures the card is not tilted when inputs are focused
+                        if (!card.classList.contains('flipped')) {
+                            card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                        }
+                    });
+                });
+            
+                // Apply tilt effect based on mouse movement
+                document.addEventListener('mousemove', (e) => {
+                    if (!card.classList.contains('flipped') && document.activeElement !== nameInput && document.activeElement !== numberInput) {
+                        const cardRect = card.getBoundingClientRect();
+                        const centerX = cardRect.left + cardRect.width / 2;
+                        const centerY = cardRect.top + cardRect.height / 2;
+                        const mouseX = e.clientX - centerX;
+                        const mouseY = e.clientY - centerY;
+                        const rotateY = mouseX / 20;
+                        const rotateX = -(mouseY / 20);
+                        card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+                    }
+                });
+            });
+            </script>
+            
+
+    </body>
 </html>
