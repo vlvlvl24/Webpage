@@ -3,8 +3,8 @@
 This repository contains the source code. Main pages of the website:
 
 - `main.html`: Home page (Pascal)
-- `about.html`: About page (Jonas)
-- `services.html`: Services page (Elias)
+- `about.html`: About page (Elias)
+- `services.html`: Services page (Jonas)
 - `contact.html`: Contact page (Jonathan)
 
 Ausfuehren in VS-Code einfach via F5 -> local Browser, macht er dann lokal auf. 
